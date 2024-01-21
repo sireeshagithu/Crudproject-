@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: chartreuse">
+<div>
+    <h2 align="center">Student details</h2>
+    {% if students %}
+        <table align="center" border="1">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Mail</th>
+            <th>Age</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for student in students %}
+            <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.address }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.mail }}</td>
+            <td><a href="{% url 'update' student.id %}">update</a> </td>
+            <td><a href="{% url 'delete' student.id %}">delete</a> </td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+</div>
+<a href="{% url 'index' %}">go back</a>
+
+</body>
+</html>
